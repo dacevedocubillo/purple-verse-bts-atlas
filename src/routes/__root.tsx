@@ -80,8 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ARMY Space — Descubre el universo de BTS" },
-      { name: "description", content: "Un espacio fan sobre BTS: miembros, discografía y comunidad ARMY." },
+      { title: "ARMY Space — Discover the BTS Universe" },
+      { name: "description", content: "A fan space about BTS: members, discography and the ARMY community." },
       { property: "og:site_name", content: "ARMY Space" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
