@@ -68,8 +68,8 @@ function Contact() {
           ))}
           <div className="space-y-2">
             <Label htmlFor="message">Mensaje</Label>
-            <Textarea id="message" name="message" rows={5} maxLength={1000} aria-invalid={!!errors.message} />
-            {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
+            <Textarea id="message" name="message" rows={5} maxLength={1000} aria-invalid={!!errors["message"]} />
+            {errors["message"] && <p className="text-sm text-destructive">{errors["message"]}</p>}
           </div>
           <Button type="submit" size="lg" className="w-full rounded-full">Enviar mensaje</Button>
         </form>
