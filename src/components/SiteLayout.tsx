@@ -6,17 +6,17 @@ import { Button } from "@/components/ui/button";
 export const SPOTIFY_URL = "https://open.spotify.com/artist/3Nrfpe0tUJi4K4DXYWgMUX";
 
 const links = [
-  { to: "/", label: "Inicio" },
-  { to: "/miembros", label: "Miembros" },
-  { to: "/discografia", label: "Discografía" },
-  { to: "/contacto", label: "Contacto" },
+  { to: "/", label: "Home" },
+  { to: "/members", label: "Members" },
+  { to: "/discography", label: "Discography" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6" aria-label="Principal">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6" aria-label="Main">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-bold text-primary">
           <Heart className="h-5 w-5 fill-current" aria-hidden /> ARMY Space
         </Link>
@@ -34,12 +34,12 @@ export function SiteHeader() {
           ))}
         </ul>
         <Button asChild className="hidden rounded-full md:inline-flex">
-          <a href={SPOTIFY_URL} target="_blank" rel="noreferrer">Escuchar en Spotify</a>
+          <a href={SPOTIFY_URL} target="_blank" rel="noreferrer">Listen on Spotify</a>
         </Button>
         <button
           className="rounded-md p-2 text-foreground md:hidden"
           onClick={() => setOpen((o) => !o)}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
           {open ? <X /> : <Menu />}
@@ -62,7 +62,7 @@ export function SiteHeader() {
             ))}
           </ul>
           <Button asChild className="w-full rounded-full">
-            <a href={SPOTIFY_URL} target="_blank" rel="noreferrer">Escuchar en Spotify</a>
+            <a href={SPOTIFY_URL} target="_blank" rel="noreferrer">Listen on Spotify</a>
           </Button>
         </div>
       )}
@@ -71,10 +71,10 @@ export function SiteHeader() {
 }
 
 const cols = [
-  { title: "Contenido", items: [["Discografía", "/discografia"], ["Álbumes", "/discografia"], ["Miembros", "/miembros"]] },
-  { title: "Comunidad", items: [["ARMY Global", "/"], ["Eventos", "/"], ["Contacto", "/contacto"]] },
-  { title: "Recursos", items: [["Letras traducidas", "/"], ["Guías para nuevos fans", "/miembros"]] },
-  { title: "Legal", items: [["Privacidad", "/"], ["Términos de uso", "/"]] },
+  { title: "Content", items: [["Discography", "/discography"], ["Albums", "/discography"], ["Members", "/members"]] },
+  { title: "Community", items: [["ARMY Global", "/"], ["Events", "/"], ["Contact", "/contact"]] },
+  { title: "Resources", items: [["Translated lyrics", "/"], ["New fan guides", "/members"]] },
+  { title: "Legal", items: [["Privacy", "/"], ["Terms of use", "/"]] },
 ] as const;
 
 export function SiteFooter() {
@@ -95,7 +95,7 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-ink-foreground/15 px-4 py-6 text-sm sm:flex-row sm:px-6">
-        <p className="opacity-70">© {new Date().getFullYear()} ARMY Space · Sitio hecho por una fan 💜</p>
+        <p className="opacity-70">© {new Date().getFullYear()} ARMY Space · A site made by a fan 💜</p>
         <div className="flex gap-4">
           <a href="https://twitter.com/BTS_twt" aria-label="Twitter" target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100"><Twitter className="h-5 w-5" /></a>
           <a href="https://www.instagram.com/bts.bighitofficial/" aria-label="Instagram" target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100"><Instagram className="h-5 w-5" /></a>
