@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/SiteLayout";
 
-const title = "BTS Members — RM, Jin, SUGA, j-hope, Jimin, V y Jung Kook";
+const title = "BTS Members — RM, Jin, SUGA, j-hope, Jimin, V and Jung Kook";
 const description = "Meet the 7 members of BTS: real names, birthdays, roles in the group and their solo projects.";
 
 export const Route = createFileRoute("/members")({

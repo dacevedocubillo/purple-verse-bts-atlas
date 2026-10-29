@@ -63,7 +63,7 @@ function Index() {
 
       <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-24 sm:px-6 md:grid-cols-2">
         {[
-          { to: "/members" as const, icon: Users, title: "BTS Members", text: "RM, Jin, SUGA, j-hope, Jimin, V y Jung Kook: roles, facts and solo projects." },
+          { to: "/members" as const, icon: Users, title: "BTS Members", text: "RM, Jin, SUGA, j-hope, Jimin, V and Jung Kook: roles, facts and solo projects." },
           { to: "/discography" as const, icon: Disc3, title: "BTS Discography", text: "From 2 Cool 4 Skool to Proof: albums, eras and key songs." },
         ].map((c) => (
           <Link key={c.to} to={c.to} className="lift group rounded-3xl bg-secondary p-8">
