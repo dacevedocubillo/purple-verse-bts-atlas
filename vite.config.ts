@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    optimizeDeps: {
+      include: ["@radix-ui/react-slot", "@radix-ui/react-label", "class-variance-authority", "clsx", "tailwind-merge", "lucide-react", "sonner", "zod"],
+    },
+  },
 });
