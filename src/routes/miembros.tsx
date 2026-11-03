@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Instagram, Music2 } from "lucide-react";
 import { PageHero } from "@/components/SiteLayout";
 
 const title = "Miembros de BTS — RM, Jin, SUGA, j-hope, Jimin, V y Jung Kook";
@@ -20,13 +21,13 @@ export const Route = createFileRoute("/miembros")({
 });
 
 const members = [
-  { stage: "RM", name: "Kim Namjoon", born: "12 sep 1994", place: "Ilsan, Goyang", role: "Líder, rapero principal", solo: "Indigo (2022), Right Place, Wrong Person (2024)", fact: "Aprendió gran parte de su inglés viendo Friends." },
-  { stage: "Jin", name: "Kim Seokjin", born: "4 dic 1992", place: "Gwacheon", role: "Vocalista, visual", solo: "The Astronaut (2022), Happy (2024)", fact: "El mayor del grupo, famoso por sus chistes de papá." },
-  { stage: "SUGA", name: "Min Yoongi", born: "9 mar 1993", place: "Daegu", role: "Rapero principal, productor", solo: "D-DAY (2023), mixtapes como Agust D", fact: "Produce música para BTS y para otros artistas como IU y PSY." },
-  { stage: "j-hope", name: "Jung Hoseok", born: "18 feb 1994", place: "Gwangju", role: "Bailarín principal, rapero", solo: "Jack In The Box (2022), HOPE ON THE STREET (2024)", fact: "Fue el primer miembro en encabezar el escenario principal de Lollapalooza." },
-  { stage: "Jimin", name: "Park Jimin", born: "13 oct 1995", place: "Busan", role: "Vocalista y bailarín principal", solo: "FACE (2023), MUSE (2024)", fact: "“Like Crazy” fue el primer #1 en solitario de un artista coreano en el Billboard Hot 100." },
-  { stage: "V", name: "Kim Taehyung", born: "30 dic 1995", place: "Daegu", role: "Vocalista, visual", solo: "Layover (2023)", fact: "Su grave barrítono es una de las voces más reconocibles del grupo." },
-  { stage: "Jung Kook", name: "Jeon Jungkook", born: "1 sep 1997", place: "Busan", role: "Vocalista principal, maknae", solo: "GOLDEN (2023), “Seven”", fact: "Cantó “Dreamers” en la ceremonia de apertura del Mundial Qatar 2022." },
+  { stage: "RM", spotify: "https://open.spotify.com/artist/2auC28zjQyVTsiZKNgPRGs", instagram: "https://www.instagram.com/rkive/", name: "Kim Namjoon", born: "12 sep 1994", place: "Ilsan, Goyang", role: "Líder, rapero principal", solo: "Indigo (2022), Right Place, Wrong Person (2024)", fact: "Aprendió gran parte de su inglés viendo Friends." },
+  { stage: "Jin", spotify: "https://open.spotify.com/artist/5vV3bFXnN6D6N3Nj4xRvaV", instagram: "https://www.instagram.com/jin/", name: "Kim Seokjin", born: "4 dic 1992", place: "Gwacheon", role: "Vocalista, visual", solo: "The Astronaut (2022), Happy (2024)", fact: "El mayor del grupo, famoso por sus chistes de papá." },
+  { stage: "SUGA", spotify: "https://open.spotify.com/artist/0ebNdVaOfp6N0oZ1guIxM8", instagram: "https://www.instagram.com/agustd/", name: "Min Yoongi", born: "9 mar 1993", place: "Daegu", role: "Rapero principal, productor", solo: "D-DAY (2023), mixtapes como Agust D", fact: "Produce música para BTS y para otros artistas como IU y PSY." },
+  { stage: "j-hope", spotify: "https://open.spotify.com/artist/0b1sIQumIAsNbqAoIClSpy", instagram: "https://www.instagram.com/uarmyhope/", name: "Jung Hoseok", born: "18 feb 1994", place: "Gwangju", role: "Bailarín principal, rapero", solo: "Jack In The Box (2022), HOPE ON THE STREET (2024)", fact: "Fue el primer miembro en encabezar el escenario principal de Lollapalooza." },
+  { stage: "Jimin", spotify: "https://open.spotify.com/artist/1oSPZhvZMIrWW5I41kPkkY", instagram: "https://www.instagram.com/j.m/", name: "Park Jimin", born: "13 oct 1995", place: "Busan", role: "Vocalista y bailarín principal", solo: "FACE (2023), MUSE (2024)", fact: "“Like Crazy” fue el primer #1 en solitario de un artista coreano en el Billboard Hot 100." },
+  { stage: "V", spotify: "https://open.spotify.com/artist/3JsHnjpbhX4SnySpvpa9DK", instagram: "https://www.instagram.com/thv/", name: "Kim Taehyung", born: "30 dic 1995", place: "Daegu", role: "Vocalista, visual", solo: "Layover (2023)", fact: "Su grave barrítono es una de las voces más reconocibles del grupo." },
+  { stage: "Jung Kook", spotify: "https://open.spotify.com/artist/6HaGTQPmzraVmaVxvz6EUc", instagram: "https://www.instagram.com/mnijungkook/", name: "Jeon Jungkook", born: "1 sep 1997", place: "Busan", role: "Vocalista principal, maknae", solo: "GOLDEN (2023), “Seven”", fact: "Cantó “Dreamers” en la ceremonia de apertura del Mundial Qatar 2022." },
 ];
 
 function Miembros() {
@@ -53,6 +54,19 @@ function Miembros() {
                 <div className="flex justify-between gap-4"><dt className="text-muted-foreground">Solos</dt><dd className="text-right font-medium">{m.solo}</dd></div>
               </dl>
               <p className="mt-5 rounded-2xl bg-accent p-4 text-sm text-accent-foreground">💜 {m.fact}</p>
+              <div className="mt-5 flex flex-wrap gap-2" aria-label={`Perfiles de ${m.stage}`}>
+                <a href={m.spotify} target="_blank" rel="noopener noreferrer" aria-label={`Escuchar a ${m.stage} en Spotify (abre en otra pestaña)`} className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                  <Music2 className="h-4 w-4" aria-hidden="true" /> Spotify
+                </a>
+                {m.stage === "SUGA" && (
+                  <a href="https://open.spotify.com/artist/5RmQ8k4l3HZ8JoPb4mNsML" target="_blank" rel="noopener noreferrer" aria-label="Escuchar a Agust D en Spotify (abre en otra pestaña)" className="inline-flex items-center gap-2 rounded-full border border-primary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                    <Music2 className="h-4 w-4" aria-hidden="true" /> Agust D
+                  </a>
+                )}
+                <a href={m.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Ver Instagram de ${m.stage} (abre en otra pestaña)`} className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                  <Instagram className="h-4 w-4" aria-hidden="true" /> Instagram
+                </a>
+              </div>
             </article>
           ))}
         </div>
