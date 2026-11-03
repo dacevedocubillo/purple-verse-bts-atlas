@@ -43,4 +43,4 @@ Published URL: https://dacevedocubillo.github.io/purple-verse-bts-atlas/
 
 In repository Settings → Pages, select **GitHub Actions** as the source. The `Deploy GitHub Pages` workflow builds and deploys changes pushed to `main`.
 
-The contact form opens the visitor's email application; it does not use a mail server.
+The contact form sends submissions to the configured Formspree endpoint. The recipient email and notification preferences are managed in the Formspree dashboard. Success is displayed only after an accepted submission; failed submissions preserve the visitor's message for retry.

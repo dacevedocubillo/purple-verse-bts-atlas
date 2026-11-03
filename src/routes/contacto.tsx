@@ -33,9 +33,13 @@ const schema = z.object({
 
 function Contacto() {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState("");
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending) return;
+    setStatus("");
     const form = e.currentTarget;
     const result = schema.safeParse(Object.fromEntries(new FormData(form)));
     if (!result.success) {
@@ -45,10 +49,22 @@ function Contacto() {
       return;
     }
     setErrors({});
-    const { name, email, message } = result.data;
-    window.location.href = `mailto:?subject=${encodeURIComponent(`Mensaje de ${name} (${email})`)}&body=${encodeURIComponent(message)}`;
-    toast.success("¡Gracias por escribir, ARMY! 💜");
-    form.reset();
+    setSending(true);
+    try {
+      const response = await fetch("https://formspree.io/f/maeelkve", {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+      });
+      if (!response.ok) throw new Error("Form submission failed");
+      setStatus("¡Mensaje enviado! Gracias por escribir, ARMY. 💜");
+      toast.success("¡Mensaje enviado! 💜");
+      form.reset();
+    } catch {
+      setErrors({ submit: "No se pudo enviar el mensaje. Tus datos siguen aquí; intenta nuevamente en unos minutos." });
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -62,16 +78,19 @@ function Contacto() {
           ] as const).map(([id, label, type]) => (
             <div key={id} className="space-y-2">
               <Label htmlFor={id}>{label}</Label>
-              <Input id={id} name={id} type={type} maxLength={255} aria-invalid={!!errors[id]} />
+              <Input id={id} name={id} type={type} maxLength={id === "name" ? 100 : 255} disabled={sending} aria-invalid={!!errors[id]} />
               {errors[id] && <p className="text-sm text-destructive">{errors[id]}</p>}
             </div>
           ))}
           <div className="space-y-2">
             <Label htmlFor="message">Mensaje</Label>
-            <Textarea id="message" name="message" rows={5} maxLength={1000} aria-invalid={!!errors["message"]} />
+            <Textarea id="message" name="message" rows={5} maxLength={1000} disabled={sending} aria-invalid={!!errors["message"]} />
             {errors["message"] && <p className="text-sm text-destructive">{errors["message"]}</p>}
           </div>
-          <Button type="submit" size="lg" className="w-full rounded-full">Enviar mensaje</Button>
+          <p className="text-xs text-muted-foreground">Al enviar, tu nombre, correo y mensaje se procesarán mediante Formspree para responder a tu consulta.</p>
+          {errors["submit"] && <p role="alert" className="text-sm text-destructive">{errors["submit"]}</p>}
+          {status && <p role="status" className="text-sm text-primary">{status}</p>}
+          <Button type="submit" size="lg" disabled={sending} className="w-full rounded-full">{sending ? "Enviando…" : "Enviar mensaje"}</Button>
         </form>
       </section>
     </>
