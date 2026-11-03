@@ -35,11 +35,12 @@ describe("New ARMY guide", () => {
     fireEvent.change(screen.getByRole("searchbox"), { target: { value: "Spring Day" } });
     expect(screen.getByText(/No hay coincidencias/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Ver todas las canciones" }));
-    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(9);
+    expect(screen.getAllByRole("heading", { level: 2 })).toHaveLength(24);
   });
 
   it("persists favorites across visits and supports removing them", () => {
     const view = render(<Songs />);
+    fireEvent.change(screen.getByRole("searchbox"), { target: { value: "Dynamite" } });
     fireEvent.click(screen.getByRole("button", { name: "Guardar Dynamite en favoritas" }));
     view.unmount();
     render(<Songs />);
@@ -52,6 +53,7 @@ describe("New ARMY guide", () => {
   it("allows favorites even if browser storage is blocked", () => {
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("Blocked"); });
     render(<Songs />);
+    fireEvent.change(screen.getByRole("searchbox"), { target: { value: "Butter" } });
     fireEvent.click(screen.getByRole("button", { name: "Guardar Butter en favoritas" }));
     expect(screen.getByRole("button", { name: "Quitar Butter de favoritas" })).toBeInTheDocument();
     expect(screen.getByText(/solo durante esta visita/)).toBeInTheDocument();

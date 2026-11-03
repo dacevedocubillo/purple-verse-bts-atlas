@@ -59,7 +59,7 @@ function Index() {
         <div className="mt-6 grid gap-5 md:grid-cols-3">
           {[
             { to: "/empieza-aqui" as const, icon: Compass, title: "Empieza sin perderte", text: "Un recorrido sencillo con cuatro pasos y enlaces oficiales." },
-            { to: "/canciones" as const, icon: Music, title: "Encuentra tu sonido", text: "Filtra por estilo y guarda las canciones que quieras volver a escuchar." },
+            { to: "/canciones" as const, icon: Music, title: "Encuentra tu sonido", text: "Explora canciones por álbum y año, y guarda tus favoritas." },
             { to: "/guia-army" as const, icon: BookOpen, title: "Habla un poquito de ARMY", text: "Bias, OT7, comeback… Un glosario para entender la conversación." },
           ].map(card => <Link key={card.to} to={card.to} className="lift rounded-3xl border border-border bg-card p-7"><card.icon className="h-7 w-7 text-primary" aria-hidden="true" /><h3 className="mt-4 text-xl font-bold">{card.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.text}</p><span className="mt-5 inline-flex items-center gap-2 font-semibold text-primary">Descubrir<ArrowRight className="h-4 w-4" aria-hidden="true" /></span></Link>)}
         </div>
