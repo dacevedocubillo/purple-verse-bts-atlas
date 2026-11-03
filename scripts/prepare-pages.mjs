@@ -2,7 +2,7 @@ import { access, cp, mkdir, readFile, writeFile } from "node:fs/promises";
 
 const source = "dist/client";
 const prefix = "/purple-verse-bts-atlas/";
-const routes = ["", "miembros", "discografia", "contacto"];
+const routes = ["", "miembros", "discografia", "contacto", "empieza-aqui", "guia-army", "canciones"];
 
 // TanStack may place prerendered HTML beneath the configured base path.
 // The Pages artifact itself is already mounted at that base path.
@@ -21,4 +21,4 @@ for (const route of routes) {
   }
 }
 await writeFile(`${source}/.nojekyll`, "");
-console.log("Verified static HTML for all four GitHub Pages routes.");
+console.log(`Verified static HTML for all ${routes.length} GitHub Pages routes.`);

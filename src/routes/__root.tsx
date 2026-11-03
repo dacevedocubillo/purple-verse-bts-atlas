@@ -80,8 +80,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ARMY Space — Descubre el universo BTS" },
-      { name: "description", content: "Un espacio de fans sobre BTS: miembros, discografía y la comunidad ARMY." },
+      { title: "ARMY Space — Tu primera guía de BTS" },
+      { name: "description", content: "Una guía de fans para nuevas ARMY: conoce a BTS, encuentra canciones y descubre el vocabulario del fandom." },
       { property: "og:site_name", content: "ARMY Space" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

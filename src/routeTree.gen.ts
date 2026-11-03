@@ -10,13 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CancionesRouteImport } from './routes/canciones'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as DiscografiaRouteImport } from './routes/discografia'
+import { Route as EmpiezaAquiRouteImport } from './routes/empieza-aqui'
+import { Route as GuiaArmyRouteImport } from './routes/guia-army'
 import { Route as MiembrosRouteImport } from './routes/miembros'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CancionesRoute = CancionesRouteImport.update({
+  id: '/canciones',
+  path: '/canciones',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -29,6 +37,16 @@ const DiscografiaRoute = DiscografiaRouteImport.update({
   path: '/discografia',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmpiezaAquiRoute = EmpiezaAquiRouteImport.update({
+  id: '/empieza-aqui',
+  path: '/empieza-aqui',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaArmyRoute = GuiaArmyRouteImport.update({
+  id: '/guia-army',
+  path: '/guia-army',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MiembrosRoute = MiembrosRouteImport.update({
   id: '/miembros',
   path: '/miembros',
@@ -37,35 +55,69 @@ const MiembrosRoute = MiembrosRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/canciones': typeof CancionesRoute
   '/contacto': typeof ContactoRoute
   '/discografia': typeof DiscografiaRoute
+  '/empieza-aqui': typeof EmpiezaAquiRoute
+  '/guia-army': typeof GuiaArmyRoute
   '/miembros': typeof MiembrosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/canciones': typeof CancionesRoute
   '/contacto': typeof ContactoRoute
   '/discografia': typeof DiscografiaRoute
+  '/empieza-aqui': typeof EmpiezaAquiRoute
+  '/guia-army': typeof GuiaArmyRoute
   '/miembros': typeof MiembrosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/canciones': typeof CancionesRoute
   '/contacto': typeof ContactoRoute
   '/discografia': typeof DiscografiaRoute
+  '/empieza-aqui': typeof EmpiezaAquiRoute
+  '/guia-army': typeof GuiaArmyRoute
   '/miembros': typeof MiembrosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contacto' | '/discografia' | '/miembros'
+  fullPaths:
+    | '/'
+    | '/canciones'
+    | '/contacto'
+    | '/discografia'
+    | '/empieza-aqui'
+    | '/guia-army'
+    | '/miembros'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contacto' | '/discografia' | '/miembros'
-  id: '__root__' | '/' | '/contacto' | '/discografia' | '/miembros'
+  to:
+    | '/'
+    | '/canciones'
+    | '/contacto'
+    | '/discografia'
+    | '/empieza-aqui'
+    | '/guia-army'
+    | '/miembros'
+  id:
+    | '__root__'
+    | '/'
+    | '/canciones'
+    | '/contacto'
+    | '/discografia'
+    | '/empieza-aqui'
+    | '/guia-army'
+    | '/miembros'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CancionesRoute: typeof CancionesRoute
   ContactoRoute: typeof ContactoRoute
   DiscografiaRoute: typeof DiscografiaRoute
+  EmpiezaAquiRoute: typeof EmpiezaAquiRoute
+  GuiaArmyRoute: typeof GuiaArmyRoute
   MiembrosRoute: typeof MiembrosRoute
 }
 
@@ -76,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/canciones': {
+      id: '/canciones'
+      path: '/canciones'
+      fullPath: '/canciones'
+      preLoaderRoute: typeof CancionesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -92,6 +151,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DiscografiaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/empieza-aqui': {
+      id: '/empieza-aqui'
+      path: '/empieza-aqui'
+      fullPath: '/empieza-aqui'
+      preLoaderRoute: typeof EmpiezaAquiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia-army': {
+      id: '/guia-army'
+      path: '/guia-army'
+      fullPath: '/guia-army'
+      preLoaderRoute: typeof GuiaArmyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/miembros': {
       id: '/miembros'
       path: '/miembros'
@@ -104,8 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CancionesRoute: CancionesRoute,
   ContactoRoute: ContactoRoute,
   DiscografiaRoute: DiscografiaRoute,
+  EmpiezaAquiRoute: EmpiezaAquiRoute,
+  GuiaArmyRoute: GuiaArmyRoute,
   MiembrosRoute: MiembrosRoute,
 }
 export const routeTree = rootRouteImport
