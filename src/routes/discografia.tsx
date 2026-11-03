@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/SiteLayout";
 
 const title = "Discografía de BTS — Álbumes, eras y canciones clave";
-const description = "Explora la discografía de BTS: álbumes de estudio, las series Love Yourself y Map of the Soul, y éxitos como Dynamite y Butter.";
+const description = "Explora la discografía de BTS: álbumes de estudio, las series Love Yourself y Map of the Soul, ARIRANG (2026) y éxitos como Dynamite y Butter.";
 
 export const Route = createFileRoute("/discografia")({
   head: () => ({
@@ -30,10 +30,11 @@ const albums = [
   { year: 2020, title: "BE", type: "Álbum de estudio", track: "Life Goes On · Dynamite", note: "Hecho durante la pandemia; Dynamite les dio su primer #1 en el Hot 100 y una nominación al Grammy." },
   { year: 2021, title: "Butter / Permission to Dance", type: "Sencillos", track: "Butter", note: "Butter pasó 10 semanas en el #1 del Hot 100." },
   { year: 2022, title: "Proof", type: "Antología", track: "Yet To Come", note: "La celebración de 9 años juntos antes de su etapa en solitario." },
+  { year: 2026, title: "ARIRANG", type: "Álbum de estudio", track: "SWIM", note: "Publicado el 20 de marzo de 2026. Sus 14 canciones abren una nueva etapa para BTS, con un título que conecta con sus raíces coreanas." },
 ];
 
 const stats = [
-  ["9", "álbumes de estudio"],
+  [String(albums.length), "entradas en esta cronología"],
   ["6", "#1 en el Billboard Hot 100"],
   ["5", "nominaciones al Grammy"],
   ["2013", "año de debut"],
@@ -42,7 +43,7 @@ const stats = [
 function Discografia() {
   return (
     <>
-      <PageHero eyebrow="Discografía" title="Una década de música" subtitle="Del sonido hip hop de su debut al pop global: estas son las eras que definieron a BTS." />
+      <PageHero eyebrow="Discografía" title="Más de una década de música" subtitle="Del sonido hip hop de su debut al pop global: estas son las eras que definieron a BTS." />
       <section className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-4 pt-16 sm:px-6 md:grid-cols-4">
         {stats.map(([n, l]) => (
           <div key={l} className="rounded-3xl bg-secondary p-6 text-center">
