@@ -10,63 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as DiscographyRouteImport } from './routes/discography'
-import { Route as MembersRouteImport } from './routes/members'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as DiscografiaRouteImport } from './routes/discografia'
+import { Route as MiembrosRouteImport } from './routes/miembros'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DiscographyRoute = DiscographyRouteImport.update({
-  id: '/discography',
-  path: '/discography',
+const DiscografiaRoute = DiscografiaRouteImport.update({
+  id: '/discografia',
+  path: '/discografia',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MembersRoute = MembersRouteImport.update({
-  id: '/members',
-  path: '/members',
+const MiembrosRoute = MiembrosRouteImport.update({
+  id: '/miembros',
+  path: '/miembros',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/discography': typeof DiscographyRoute
-  '/members': typeof MembersRoute
+  '/contacto': typeof ContactoRoute
+  '/discografia': typeof DiscografiaRoute
+  '/miembros': typeof MiembrosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/discography': typeof DiscographyRoute
-  '/members': typeof MembersRoute
+  '/contacto': typeof ContactoRoute
+  '/discografia': typeof DiscografiaRoute
+  '/miembros': typeof MiembrosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/discography': typeof DiscographyRoute
-  '/members': typeof MembersRoute
+  '/contacto': typeof ContactoRoute
+  '/discografia': typeof DiscografiaRoute
+  '/miembros': typeof MiembrosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/discography' | '/members'
+  fullPaths: '/' | '/contacto' | '/discografia' | '/miembros'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/discography' | '/members'
-  id: '__root__' | '/' | '/contact' | '/discography' | '/members'
+  to: '/' | '/contacto' | '/discografia' | '/miembros'
+  id: '__root__' | '/' | '/contacto' | '/discografia' | '/miembros'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContactRoute: typeof ContactRoute
-  DiscographyRoute: typeof DiscographyRoute
-  MembersRoute: typeof MembersRoute
+  ContactoRoute: typeof ContactoRoute
+  DiscografiaRoute: typeof DiscografiaRoute
+  MiembrosRoute: typeof MiembrosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -78,25 +78,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/discography': {
-      id: '/discography'
-      path: '/discography'
-      fullPath: '/discography'
-      preLoaderRoute: typeof DiscographyRouteImport
+    '/discografia': {
+      id: '/discografia'
+      path: '/discografia'
+      fullPath: '/discografia'
+      preLoaderRoute: typeof DiscografiaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/members': {
-      id: '/members'
-      path: '/members'
-      fullPath: '/members'
-      preLoaderRoute: typeof MembersRouteImport
+    '/miembros': {
+      id: '/miembros'
+      path: '/miembros'
+      fullPath: '/miembros'
+      preLoaderRoute: typeof MiembrosRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -104,9 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContactRoute: ContactRoute,
-  DiscographyRoute: DiscographyRoute,
-  MembersRoute: MembersRoute,
+  ContactoRoute: ContactoRoute,
+  DiscografiaRoute: DiscografiaRoute,
+  MiembrosRoute: MiembrosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

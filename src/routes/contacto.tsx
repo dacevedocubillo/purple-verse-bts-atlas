@@ -8,30 +8,30 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { PageHero } from "@/components/SiteLayout";
 
-const title = "Contact — ARMY Space";
-const description = "Write to me: share your favorite BTS song, ideas for the site or just say hi.";
+const title = "Contacto — ARMY Space";
+const description = "Escríbeme: comparte tu canción favorita de BTS, ideas para el sitio o simplemente saluda.";
 
-export const Route = createFileRoute("/contact")({
+export const Route = createFileRoute("/contacto")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "/contacto" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "/contacto" }],
   }),
-  component: Contact,
+  component: Contacto,
 });
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Please enter your name").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  message: z.string().trim().min(1, "Please enter a message").max(1000, "Maximum 1000 characters"),
+  name: z.string().trim().min(1, "Escribe tu nombre").max(100),
+  email: z.string().trim().email("Correo electrónico no válido").max(255),
+  message: z.string().trim().min(1, "Escribe un mensaje").max(1000, "Máximo 1000 caracteres"),
 });
 
-function Contact() {
+function Contacto() {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -46,19 +46,19 @@ function Contact() {
     }
     setErrors({});
     const { name, email, message } = result.data;
-    window.location.href = `mailto:?subject=${encodeURIComponent(`Message from ${name} (${email})`)}&body=${encodeURIComponent(message)}`;
-    toast.success("Thanks for writing, ARMY! 💜");
+    window.location.href = `mailto:?subject=${encodeURIComponent(`Mensaje de ${name} (${email})`)}&body=${encodeURIComponent(message)}`;
+    toast.success("¡Gracias por escribir, ARMY! 💜");
     form.reset();
   }
 
   return (
     <>
-      <PageHero eyebrow="Contact" title="Let’s Talk BTS" subtitle="Have a favorite song, an idea or a question? I’d love to hear from you." />
+      <PageHero eyebrow="Contacto" title="Hablemos de BTS" subtitle="¿Tienes una canción favorita, una idea o una pregunta? Me encantaría leerte." />
       <section className="mx-auto max-w-xl px-4 py-20 sm:px-6">
         <form onSubmit={onSubmit} noValidate className="space-y-5 rounded-3xl border border-border bg-card p-8 shadow-soft">
           {([
-            ["name", "Name", "text"],
-            ["email", "Email", "email"],
+            ["name", "Nombre", "text"],
+            ["email", "Correo electrónico", "email"],
           ] as const).map(([id, label, type]) => (
             <div key={id} className="space-y-2">
               <Label htmlFor={id}>{label}</Label>
@@ -67,11 +67,11 @@ function Contact() {
             </div>
           ))}
           <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
+            <Label htmlFor="message">Mensaje</Label>
             <Textarea id="message" name="message" rows={5} maxLength={1000} aria-invalid={!!errors["message"]} />
             {errors["message"] && <p className="text-sm text-destructive">{errors["message"]}</p>}
           </div>
-          <Button type="submit" size="lg" className="w-full rounded-full">Send message</Button>
+          <Button type="submit" size="lg" className="w-full rounded-full">Enviar mensaje</Button>
         </form>
       </section>
     </>
