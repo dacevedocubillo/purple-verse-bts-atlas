@@ -18,9 +18,9 @@ export const Route = createFileRoute("/contacto")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "/contacto" },
+      { property: "og:url", content: `${import.meta.env.BASE_URL}contacto` },
     ],
-    links: [{ rel: "canonical", href: "/contacto" }],
+    links: [{ rel: "canonical", href: `${import.meta.env.BASE_URL}contacto` }],
   }),
   component: Contacto,
 });

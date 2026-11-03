@@ -12,9 +12,9 @@ export const Route = createFileRoute("/miembros")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/miembros" },
+      { property: "og:url", content: `${import.meta.env.BASE_URL}miembros` },
     ],
-    links: [{ rel: "canonical", href: "/miembros" }],
+    links: [{ rel: "canonical", href: `${import.meta.env.BASE_URL}miembros` }],
   }),
   component: Miembros,
 });

@@ -12,9 +12,9 @@ export const Route = createFileRoute("/discografia")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/discografia" },
+      { property: "og:url", content: `${import.meta.env.BASE_URL}discografia` },
     ],
-    links: [{ rel: "canonical", href: "/discografia" }],
+    links: [{ rel: "canonical", href: `${import.meta.env.BASE_URL}discografia` }],
   }),
   component: Discografia,
 });

@@ -28,3 +28,19 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## GitHub Pages
+
+The GitHub Pages build uses `vite.pages.config.ts` to prerender the four pages as static HTML. The normal Lovable build remains in `vite.config.ts`.
+
+```sh
+npm install
+npx vite build --config vite.pages.config.ts
+node scripts/prepare-pages.mjs
+```
+
+Published URL: https://dacevedocubillo.github.io/purple-verse-bts-atlas/
+
+In repository Settings → Pages, select **GitHub Actions** as the source. The `Deploy GitHub Pages` workflow builds and deploys changes pushed to `main`.
+
+The contact form opens the visitor's email application; it does not use a mail server.

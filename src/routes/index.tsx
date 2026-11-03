@@ -13,9 +13,9 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: "Música, baile y el mensaje de Love Myself: un espacio de fans dedicado a BTS." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: `${import.meta.env.BASE_URL}` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: `${import.meta.env.BASE_URL}` }],
   }),
   component: Index,
 });
