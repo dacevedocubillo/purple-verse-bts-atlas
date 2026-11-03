@@ -25,9 +25,11 @@ export const Route = createFileRoute("/contacto")({
   component: Contacto,
 });
 
+const biasOptions = ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jung Kook", "OT7", "Aún no me decido"] as const;
+
 const schema = z.object({
   name: z.string().trim().min(1, "Escribe tu nombre").max(100),
-  email: z.string().trim().email("Correo electrónico no válido").max(255),
+  bias: z.enum(biasOptions, { errorMap: () => ({ message: "Selecciona tu bias" }) }),
   message: z.string().trim().min(1, "Escribe un mensaje").max(1000, "Máximo 1000 caracteres"),
 });
 
@@ -72,25 +74,29 @@ function Contacto() {
       <PageHero eyebrow="Contacto" title="Hablemos de BTS" subtitle="¿Tienes una canción favorita, una idea o una pregunta? Me encantaría leerte." />
       <section className="mx-auto max-w-xl px-4 py-20 sm:px-6">
         <form onSubmit={onSubmit} noValidate className="space-y-5 rounded-3xl border border-border bg-card p-8 shadow-soft">
-          {([
-            ["name", "Nombre", "text"],
-            ["email", "Correo electrónico", "email"],
-          ] as const).map(([id, label, type]) => (
-            <div key={id} className="space-y-2">
-              <Label htmlFor={id}>{label}</Label>
-              <Input id={id} name={id} type={type} maxLength={id === "name" ? 100 : 255} disabled={sending} aria-invalid={!!errors[id]} />
-              {errors[id] && <p className="text-sm text-destructive">{errors[id]}</p>}
-            </div>
-          ))}
+          <p className="text-sm text-muted-foreground">Todos los campos son obligatorios.</p>
+          <div className="space-y-2">
+            <Label htmlFor="name">Nombre</Label>
+            <Input id="name" name="name" type="text" autoComplete="given-name" maxLength={100} required disabled={sending} aria-invalid={!!errors["name"]} aria-describedby={errors["name"] ? "name-error" : undefined} />
+            {errors["name"] && <p id="name-error" className="text-sm text-destructive">{errors["name"]}</p>}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="bias">¿Quién es tu bias?</Label>
+            <select id="bias" name="bias" defaultValue="" required disabled={sending} aria-invalid={!!errors["bias"]} aria-describedby={errors["bias"] ? "bias-error" : undefined} className="flex h-10 w-full rounded-xl border border-input bg-card px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
+              <option value="" disabled>Selecciona una opción</option>
+              {biasOptions.map((bias) => <option key={bias} value={bias}>{bias}</option>)}
+            </select>
+            {errors["bias"] && <p id="bias-error" className="text-sm text-destructive">{errors["bias"]}</p>}
+          </div>
           <div className="space-y-2">
             <Label htmlFor="message">Mensaje</Label>
-            <Textarea id="message" name="message" rows={5} maxLength={1000} disabled={sending} aria-invalid={!!errors["message"]} />
+            <Textarea id="message" name="message" rows={5} maxLength={1000} required disabled={sending} aria-invalid={!!errors["message"]} />
             {errors["message"] && <p className="text-sm text-destructive">{errors["message"]}</p>}
           </div>
-          <p className="text-xs text-muted-foreground">Al enviar, tu nombre, correo y mensaje se procesarán mediante Formspree para responder a tu consulta.</p>
+          <p className="text-xs text-muted-foreground">Al enviar, tu nombre, bias y mensaje se procesarán mediante Formspree para recibir tu comentario.</p>
           {errors["submit"] && <p role="alert" className="text-sm text-destructive">{errors["submit"]}</p>}
           {status && <p role="status" className="text-sm text-primary">{status}</p>}
-          <Button type="submit" size="lg" disabled={sending} className="w-full rounded-full">{sending ? "Enviando…" : "Enviar mensaje"}</Button>
+          <Button type="submit" size="lg" disabled={sending} className="w-full rounded-full">{sending ? "Enviando…" : "Enviar mi mensaje 💜"}</Button>
         </form>
       </section>
     </>
