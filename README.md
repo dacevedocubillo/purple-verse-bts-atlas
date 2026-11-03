@@ -1,14 +1,22 @@
-# Welcome to your Lovable project
+# Purple Verse Bts Atlas
+
+Add two new pages to my website: "BTS Members" and "BTS Discography." The BTS Members page should include all the members' names and relevant information about each member. The BTS Discography page should include relevant information about BTS's discography. Add navigation buttons to the index page that link to both pages, while keeping the existing design and style consistent. - SEO friendly
+- Mobile friendly
+- Contact form
+- Easy to navigate
+- Pretty to look at
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://purple-verse-bts-atlas.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/f9d66a8c-9a96-446e-8c0d-ecaf515325b8).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +28,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
