@@ -34,10 +34,10 @@ const albums = [
 ];
 
 const stats = [
-  [String(albums.length), "entradas en esta cronología"],
-  ["6", "#1 en el Billboard Hot 100"],
-  ["5", "nominaciones al Grammy"],
-  ["2013", "año de debut"],
+  { value: String(albums.length), label: "hitos en esta selección", detail: "Álbumes, sencillos y eras", source: null },
+  { value: "7", label: "canciones nº 1 en el Hot 100", detail: "Incluye SWIM (2026)", source: "https://www.korea.net/NewsFocus/Culture/view?articleId=289860" },
+  { value: "5", label: "nominaciones al Grammy", detail: "Nominaciones del grupo", source: "https://live.grammy.com/artists/bts/287749/" },
+  { value: "2013", label: "debut de BTS", detail: "13 de junio", source: null },
 ];
 
 function Discografia() {
@@ -45,12 +45,15 @@ function Discografia() {
     <>
       <PageHero eyebrow="Discografía" title="Más de una década de música" subtitle="Del sonido hip hop de su debut al pop global: estas son las eras que definieron a BTS." />
       <section className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-4 pt-16 sm:px-6 md:grid-cols-4">
-        {stats.map(([n, l]) => (
-          <div key={l} className="rounded-3xl bg-secondary p-6 text-center">
-            <p className="font-display text-4xl font-extrabold text-primary">{n}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{l}</p>
+        {stats.map((stat) => (
+          <div key={stat.label} className="flex flex-col items-center rounded-3xl border border-primary/10 bg-secondary p-6 text-center">
+            <p className="font-display text-4xl font-extrabold text-primary">{stat.value}</p>
+            <p className="mt-2 text-sm font-semibold">{stat.label}</p>
+            <p className="mt-2 text-xs text-muted-foreground">{stat.detail}</p>
+            {stat.source && <a href={stat.source} target="_blank" rel="noopener noreferrer" className="mt-3 text-xs font-medium text-primary underline underline-offset-4">Ver fuente<span className="sr-only"> de {stat.label} (abre en otra pestaña)</span></a>}
           </div>
         ))}
+        <p className="col-span-full text-center text-xs text-muted-foreground">Esta cronología es una selección, no el catálogo completo. Cifras revisadas el 2 de noviembre de 2026.</p>
       </section>
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
         <h2 className="mb-10 text-3xl font-bold sm:text-4xl">Cronología</h2>
