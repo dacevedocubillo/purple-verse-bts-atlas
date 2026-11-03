@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SPOTIFY_URL } from "@/components/SiteLayout";
 
 const title = "ARMY Space — Descubre el universo BTS";
-const description = "Descubre por qué BTS es mi pasatiempo favorito: su música, su baile y su mensaje de Love Myself. Conoce a los miembros y explora su discografía.";
+const description = "Un espacio para compartir la música de BTS, encontrar inspiración y conectar como ARMY. Conoce a los miembros y explora su discografía.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
-      { property: "og:description", content: "Música, baile y el mensaje de Love Myself: un espacio de fans dedicado a BTS." },
+      { property: "og:description", content: "Música, inspiración y comunidad: un espacio de fans dedicado a BTS." },
       { property: "og:url", content: `${import.meta.env.BASE_URL}` },
     ],
     links: [{ rel: "canonical", href: `${import.meta.env.BASE_URL}` }],
@@ -21,9 +21,9 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { icon: Music, title: "La música", text: "Melodías cautivadoras, una producción impecable y letras profundas sobre crecer, dudar y soñar." },
-  { icon: Sparkles, title: "El baile", text: "Coreografías complejas y perfectamente sincronizadas que te invitan a moverte, practicar y expresarte." },
-  { icon: Heart, title: "El mensaje", text: "La campaña Love Myself con UNICEF y su impacto positivo en la salud mental de millones de fans." },
+  { icon: Music, title: "Música que nos acompaña", text: "Canciones para celebrar, encontrar calma y sentirnos comprendidos en distintas etapas de la vida." },
+  { icon: Sparkles, title: "Pasión que nos inspira", text: "La creatividad y dedicación de los siete nos animan a aprender, expresarnos y perseguir nuestras metas." },
+  { icon: Heart, title: "Una comunidad para compartir", text: "Ser ARMY también es conectar, apoyar a BTS y crear recuerdos con personas que comparten este cariño." },
 ];
 
 function Index() {
@@ -50,8 +50,8 @@ function Index() {
 
       <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">Por qué es mi pasatiempo favorito</h2>
-          <p className="mt-4 text-muted-foreground">Tres razones por las que BTS pasó a formar parte de mi día a día.</p>
+          <h2 className="text-3xl font-bold sm:text-4xl">Lo que nos une</h2>
+          <p className="mt-4 text-muted-foreground">Más que canciones: momentos, inspiración y una comunidad para compartirlos.</p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {features.map((f) => (
@@ -67,7 +67,7 @@ function Index() {
       <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-24 sm:px-6 md:grid-cols-2">
         {[
           { to: "/miembros" as const, icon: Users, title: "Miembros de BTS", text: "RM, Jin, SUGA, j-hope, Jimin, V y Jung Kook: roles, datos y proyectos en solitario." },
-          { to: "/discografia" as const, icon: Disc3, title: "Discografía de BTS", text: "De 2 Cool 4 Skool a Proof: álbumes, eras y canciones clave." },
+          { to: "/discografia" as const, icon: Disc3, title: "Discografía de BTS", text: "De 2 Cool 4 Skool a ARIRANG: álbumes, eras y canciones clave." },
         ].map((c) => (
           <Link key={c.to} to={c.to} className="lift group rounded-3xl bg-secondary p-8">
             <c.icon className="h-8 w-8 text-primary" />
