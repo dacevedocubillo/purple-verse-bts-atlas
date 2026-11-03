@@ -11,6 +11,7 @@ describe("BTS catalog", () => {
   it("retains all release track counts, sources and unique recording IDs", () => {
     expect(albums).toHaveLength(41);
     expect(new Set(songs.map(s => s.id)).size).toBe(songs.length);
+    expect(songs.every(song => !/^(DISC|※)/.test(song.title))).toBe(true);
     for (const album of albums) {
       expect(album.source).toMatch(/^https:\/\/(bts\.ibighit\.com|bts-official\.jp)\//);
       expect(findSongs({...options, album: album.id}).length).toBe(new Set(album.tracks.map(t => songs.find(s => s.aliases.includes(t) && s.albums.includes(album.id))?.id)).size);
