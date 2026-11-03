@@ -43,7 +43,7 @@ const stats = [
 function Discografia() {
   return (
     <>
-      <PageHero eyebrow="Discografía" title="Más de una década de música" subtitle="Del sonido hip hop de su debut al pop global: estas son las eras que definieron a BTS." />
+      <PageHero eyebrow="Discografía" title="Cada álbum, una historia" subtitle="Un recorrido por la música de BTS, desde sus primeros pasos hasta ARIRANG." />
       <section className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-4 pt-16 sm:px-6 md:grid-cols-4">
         {stats.map((stat) => (
           <div key={stat.label} className="flex flex-col items-center rounded-3xl border border-primary/10 bg-secondary p-6 text-center">
