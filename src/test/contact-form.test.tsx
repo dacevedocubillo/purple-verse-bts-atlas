@@ -9,7 +9,7 @@ afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 
 function fillForm() {
   fireEvent.change(screen.getByLabelText("Nombre"), { target: { value: "Prueba" } });
-  fireEvent.change(screen.getByLabelText("¿Quién es tu bias?"), { target: { value: "RM" } });
+  fireEvent.change(screen.getByLabelText("¿Quién es tu bias?"), { target: { value: "Namjoon" } });
   fireEvent.change(screen.getByLabelText("Mensaje"), { target: { value: "Mensaje de prueba" } });
 }
 
@@ -30,7 +30,7 @@ describe("Contact form", () => {
     render(<ContactForm />); fillForm();
     fireEvent.click(screen.getByRole("button", { name: "Enviar mi mensaje 💜" }));
     await screen.findByRole("status");
-    expect(fetchMock).toHaveBeenCalledWith("https://formspree.io/f/maeelkve", expect.objectContaining({ method: "POST", body: JSON.stringify({ name: "Prueba", bias: "RM", message: "Mensaje de prueba" }) }));
+    expect(fetchMock).toHaveBeenCalledWith("https://formspree.io/f/maeelkve", expect.objectContaining({ method: "POST", body: JSON.stringify({ name: "Prueba", bias: "Namjoon", message: "Mensaje de prueba" }) }));
     expect(screen.getByLabelText("Nombre")).toHaveValue("");
     expect(screen.getByLabelText("¿Quién es tu bias?")).toHaveValue("");
   });

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/contacto")({
   component: Contacto,
 });
 
-const biasOptions = ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jung Kook", "OT7", "Aún no me decido"] as const;
+const biasOptions = ["Namjoon", "Seokjin", "Yoongi", "Hobi", "Jimin", "Taehyung", "Jungkook", "OT7"] as const;
 
 const schema = z.object({
   name: z.string().trim().min(1, "Escribe tu nombre").max(100),
