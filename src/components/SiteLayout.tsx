@@ -71,23 +71,26 @@ export function SiteHeader() {
 }
 
 const cols = [
-  { title: "Contenido", items: [["Discografía", "/discografia"], ["Álbumes", "/discografia"], ["Miembros", "/miembros"]] },
-  { title: "Comunidad", items: [["ARMY Global", "/"], ["Eventos", "/"], ["Contacto", "/contacto"]] },
-  { title: "Recursos", items: [["Letras traducidas", "/"], ["Guías para nuevos fans", "/miembros"]] },
-  { title: "Legal", items: [["Privacidad", "/"], ["Términos de uso", "/"]] },
+  { title: "Explora", items: [["Inicio", "/"], ["Miembros de BTS", "/miembros"], ["Discografía", "/discografia"]] },
+  { title: "Contacto", items: [["Escríbenos", "/contacto"]] },
+  { title: "Música", items: [["BTS en Spotify", SPOTIFY_URL]] },
 ] as const;
 
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-ink-foreground">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-14 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-14 sm:px-6 md:grid-cols-3">
         {cols.map((c) => (
           <div key={c.title}>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">{c.title}</h3>
             <ul className="space-y-2 text-sm opacity-80">
               {c.items.map(([label, to]) => (
                 <li key={label}>
-                  <Link to={to} className="transition-opacity hover:opacity-100 hover:underline">{label}</Link>
+                  {to.startsWith("https://") ? (
+                    <a href={to} target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-100 hover:underline">{label}</a>
+                  ) : (
+                    <Link to={to} className="transition-opacity hover:opacity-100 hover:underline">{label}</Link>
+                  )}
                 </li>
               ))}
             </ul>
