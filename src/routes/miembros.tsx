@@ -24,7 +24,7 @@ const members = [
   { stage: "Jin", name: "Kim Seokjin", born: "4 dic 1992", place: "Gwacheon", role: "Vocalista, visual", solo: "The Astronaut (2022), Happy (2024)", fact: "El mayor del grupo, famoso por sus chistes de papá." },
   { stage: "SUGA", name: "Min Yoongi", born: "9 mar 1993", place: "Daegu", role: "Rapero principal, productor", solo: "D-DAY (2023), mixtapes como Agust D", fact: "Produce música para BTS y para otros artistas como IU y PSY." },
   { stage: "j-hope", name: "Jung Hoseok", born: "18 feb 1994", place: "Gwangju", role: "Bailarín principal, rapero", solo: "Jack In The Box (2022), HOPE ON THE STREET (2024)", fact: "Fue el primer miembro en encabezar el escenario principal de Lollapalooza." },
-  { stage: "Jimin", name: "Park Jimin", born: "13 oct 1995", place: "Busan", role: "Vocalista y bailarina principal", solo: "FACE (2023), MUSE (2024)", fact: "“Like Crazy” fue el primer #1 en solitario de un artista coreano en el Billboard Hot 100." },
+  { stage: "Jimin", name: "Park Jimin", born: "13 oct 1995", place: "Busan", role: "Vocalista y bailarín principal", solo: "FACE (2023), MUSE (2024)", fact: "“Like Crazy” fue el primer #1 en solitario de un artista coreano en el Billboard Hot 100." },
   { stage: "V", name: "Kim Taehyung", born: "30 dic 1995", place: "Daegu", role: "Vocalista, visual", solo: "Layover (2023)", fact: "Su grave barrítono es una de las voces más reconocibles del grupo." },
   { stage: "Jung Kook", name: "Jeon Jungkook", born: "1 sep 1997", place: "Busan", role: "Vocalista principal, maknae", solo: "GOLDEN (2023), “Seven”", fact: "Cantó “Dreamers” en la ceremonia de apertura del Mundial Qatar 2022." },
 ];
